@@ -1,0 +1,54 @@
+$arrow-size: 10px;
+
+.popover {
+  background-color: white;
+  padding: 8px 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  text-align: center;
+  min-width: 5rem;
+  z-index: 9999;
+
+  &-portal {
+    position: relative;
+    z-index: 99999;
+  }
+
+  /**
+   * Overlay
+   */
+  &-overlay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+  #arrow {
+    top: 0;
+    position: absolute;
+    width: $arrow-size;
+    height: $arrow-size;
+    &:after {
+      content: ' ';
+      background-color: white;
+      box-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: -1 * ($arrow-size / 2); // padding + popper height
+      left: 0;
+      transform: rotate(45deg);
+      width: $arrow-size;
+      height: $arrow-size;
+    }
+  }
+  &[data-popper-placement^='top'] > #arrow {
+    top: unset;
+    bottom: 0;
+    &:after {
+      top: unset;
+      bottom: -1 * ($arrow-size / 2); // padding + popper height
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
