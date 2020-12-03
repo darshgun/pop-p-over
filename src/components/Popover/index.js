@@ -13,7 +13,7 @@ import "./Popover.scss";
 export const component = "popover";
 
 export const PopoverDemo = forwardRef(
-  ({ children, className, arrow, container }, ref) => {
+  ({ children, className, withArrow, container }, ref) => {
     const properties = {
       className: `${component} ${className}`
     };
@@ -99,7 +99,7 @@ export const PopoverDemo = forwardRef(
               style={styles.popper}
               {...attributes.popper}
             >
-              {arrow && (
+              {withArrow && (
                 <div ref={setArrowRef} style={styles.arrow} id="arrow" />
               )}
               {children}
